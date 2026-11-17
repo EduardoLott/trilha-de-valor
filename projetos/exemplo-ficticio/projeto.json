@@ -1,0 +1,567 @@
+{
+  "anotacoes": [
+    {
+      "id": "NOTA-3",
+      "no": "S1",
+      "redacao": "pessoa",
+      "texto": "Papéis confirmados no encerramento do projeto, sem mudança de pessoas."
+    },
+    {
+      "id": "NOTA-1",
+      "no": "M3",
+      "redacao": "pessoa",
+      "texto": "Adoção em andamento: parte das áreas ainda envia os dados depois do segundo dia útil."
+    },
+    {
+      "id": "NOTA-2",
+      "no": "B1",
+      "redacao": "pessoa",
+      "texto": "Condições confirmadas: responsáveis mantidos, fonte acessível e datas de medição definidas."
+    }
+  ],
+  "atribuicao": [
+    {
+      "conclusao": "parcial",
+      "fatores_concorrentes": [
+        "O mês medido incluiu fechamento de trimestre, com volume maior que o usual."
+      ],
+      "indicador": "IND-1",
+      "limitacoes": "A primeira medição caiu em mês atípico; a meta foi atingida só na terceira medição.",
+      "redacao": "pessoa"
+    }
+  ],
+  "beneficios": [
+    {
+      "condicoes": [
+        "Integração com o sistema de gestão em produção."
+      ],
+      "descricao": "Fechamento mensal mais rápido.",
+      "id": "BEN-1",
+      "indicadores": [
+        "IND-1",
+        "IND-2"
+      ],
+      "mudancas_necessarias": [
+        "Analistas passam a usar a conciliação automática em vez da planilha.",
+        "Áreas enviam os dados até o segundo dia útil."
+      ],
+      "objetivo": "OBJ-1",
+      "prazo": "2026-09-30",
+      "responsavel": "Gerente de Controladoria"
+    }
+  ],
+  "catalogo": [
+    {
+      "dificuldade": "baixa",
+      "id": "CAT-1",
+      "indicador": "IND-1",
+      "observacao": "Medido direto no calendário de fechamento.",
+      "redacao": "pessoa",
+      "util_para_decidir": "sim"
+    },
+    {
+      "dificuldade": "media",
+      "id": "CAT-2",
+      "indicador": "IND-2",
+      "observacao": "Depende de extração manual do relatório do sistema.",
+      "redacao": "pessoa",
+      "util_para_decidir": "em_parte"
+    }
+  ],
+  "classificacao": {
+    "parcial_a_partir_de": "1/2",
+    "realizado_a_partir_de": "1"
+  },
+  "decisoes": [
+    {
+      "afeta": [],
+      "data": "2026-04-15",
+      "decidido_por": "Gerente de Controladoria",
+      "descricao": "Conciliação de contas a pagar adiada para a segunda fase.",
+      "gatilho": {
+        "alinhada": true,
+        "altera_valor": false,
+        "novas_dependencias": false
+      },
+      "id": "DEC-1",
+      "justificativa": "Dependência de fornecedor. Avaliado que não altera indicador, linha de base nem meta.",
+      "redacao": "pessoa",
+      "tipo": "mudanca_escopo"
+    }
+  ],
+  "documentos": [
+    {
+      "aprovado_em": "2026-02-10",
+      "aprovado_por": "Gerente de Controladoria",
+      "arquivo": "01-definicao/proposta-de-valor-v1.md",
+      "em_nome_de": "Gerente de Controladoria",
+      "id": "DOC-1",
+      "referencia": {
+        "IND-1": {
+          "linha_de_base": "10",
+          "meta": "7"
+        },
+        "IND-2": {
+          "linha_de_base": "0",
+          "meta": "80"
+        }
+      },
+      "sha256": "097945dcea0080c21b03c2d063732c38fe684a2d43f75dbfde1afd6a2e078745",
+      "tipo": "proposta_de_valor",
+      "versao": 1
+    },
+    {
+      "aprovado_em": "2026-06-30",
+      "aprovado_por": "Gerente de Controladoria",
+      "arquivo": "02-monitoramento/relatorio-monitoramento-v1.md",
+      "em_nome_de": "Gerente de Controladoria",
+      "id": "DOC-2",
+      "sha256": "fb7fb46b03b7d84019af17719e8dee2c77066c94fd5aa26204fd2394f02a1034",
+      "tipo": "relatorio_monitoramento",
+      "versao": 1
+    },
+    {
+      "aceites": {
+        "beneficio": {
+          "em": "2026-06-30",
+          "em_nome_de": "Gerente de Controladoria",
+          "por": "Gerente de Controladoria"
+        },
+        "governanca": {
+          "em": "2026-06-30",
+          "em_nome_de": "Escritório de Projetos",
+          "por": "Escritório de Projetos"
+        }
+      },
+      "aprovado_em": "2026-06-30",
+      "aprovado_por": "Gerente de Controladoria",
+      "arquivo": "04-sustentacao/termo-transicao-v1.md",
+      "em_nome_de": "Gerente de Controladoria",
+      "id": "DOC-3",
+      "sha256": "26d833426138f6058d682f210864e144eac8d6e3133681a888e171cc11a4dbd2",
+      "tipo": "termo_transicao",
+      "versao": 1
+    },
+    {
+      "aprovado_em": "2026-10-05",
+      "aprovado_por": "Gerente de Controladoria",
+      "arquivo": "03-mensuracao/relatorio-beneficios-v1.md",
+      "em_nome_de": "Gerente de Controladoria",
+      "id": "DOC-4",
+      "sha256": "4b63d59322099fb3195f422cacc6c314bf513f67e66c299ce9dde70e6226bb35",
+      "tipo": "relatorio_beneficios",
+      "versao": 1
+    },
+    {
+      "aprovado_em": "2026-10-15",
+      "aprovado_por": "Gerente de Controladoria",
+      "arquivo": "04-sustentacao/licoes-aprendidas-v1.md",
+      "em_nome_de": "Gerente de Controladoria",
+      "id": "DOC-5",
+      "sha256": "8de8afbbdae524eda4ab0cae4d76a9e9158fbccdb4a0e67f097f76b64f1bde2b",
+      "tipo": "licoes_aprendidas",
+      "versao": 1
+    }
+  ],
+  "encaminhamentos": [
+    {
+      "acao": "Continuar medindo a cada fechamento até completar três fechamentos seguidos na meta.",
+      "decisao": "manter",
+      "id": "ENC-1",
+      "indicador": "IND-1",
+      "prazo": "2026-12-31",
+      "redacao": "pessoa",
+      "responsavel": "Gerente de Controladoria"
+    }
+  ],
+  "execucao": {
+    "nos": [
+      {
+        "estado": "executado",
+        "id": "D1",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "D2",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "D3",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "D5",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "D4",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "verificado",
+        "id": "V1",
+        "nivel_alcancado": 2,
+        "nivel_exigido": 2
+      },
+      {
+        "estado": "aprovado",
+        "id": "G1",
+        "nivel_alcancado": "H",
+        "nivel_exigido": "H"
+      },
+      {
+        "estado": "executado",
+        "id": "M1",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "S1",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "M2",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "M3",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "M4",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "M5",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "verificado",
+        "id": "V2",
+        "nivel_alcancado": 2,
+        "nivel_exigido": 2
+      },
+      {
+        "estado": "aprovado",
+        "id": "G2",
+        "nivel_alcancado": "H",
+        "nivel_exigido": "H"
+      },
+      {
+        "estado": "executado",
+        "id": "B1",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "S2",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "B2",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "verificado",
+        "id": "VT",
+        "nivel_alcancado": 2,
+        "nivel_exigido": 2
+      },
+      {
+        "estado": "executado",
+        "id": "B3",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "verificado",
+        "id": "B4",
+        "nivel_alcancado": 2,
+        "nivel_exigido": 2
+      },
+      {
+        "estado": "aprovado",
+        "id": "GT",
+        "nivel_alcancado": "H",
+        "nivel_exigido": "H"
+      },
+      {
+        "estado": "executado",
+        "id": "B5",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "verificado",
+        "id": "V3",
+        "nivel_alcancado": 2,
+        "nivel_exigido": 2
+      },
+      {
+        "estado": "aprovado",
+        "id": "G3",
+        "nivel_alcancado": "H",
+        "nivel_exigido": "H"
+      },
+      {
+        "estado": "executado",
+        "id": "S3",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "executado",
+        "id": "S4",
+        "nivel_alcancado": 1,
+        "nivel_exigido": 1
+      },
+      {
+        "estado": "verificado",
+        "id": "V4",
+        "nivel_alcancado": 2,
+        "nivel_exigido": 2
+      },
+      {
+        "estado": "aprovado",
+        "id": "G4",
+        "nivel_alcancado": "H",
+        "nivel_exigido": "H"
+      }
+    ]
+  },
+  "indicadores": [
+    {
+      "criterio_sucesso": "Meta atingida e mantida por três fechamentos seguidos.",
+      "datas_medicao": [
+        "2026-07-31",
+        "2026-08-31",
+        "2026-09-30"
+      ],
+      "fonte": "Calendário de fechamento da Controladoria",
+      "formula": "Dias úteis entre o fim do mês e a publicação do fechamento",
+      "id": "IND-1",
+      "linha_de_base": {
+        "data": "2026-01-31",
+        "fonte": "Média dos 6 fechamentos anteriores",
+        "informado_por": "Coordenador de Contabilidade",
+        "origem": "pessoa",
+        "valor": "10"
+      },
+      "meta": {
+        "informado_por": "Gerente de Controladoria",
+        "origem": "pessoa",
+        "prazo": "2026-09-30",
+        "valor": "7"
+      },
+      "metodo_comprovacao": "antes_depois",
+      "nome": "Tempo de fechamento mensal",
+      "periodicidade": "mensal",
+      "responsavel": "Coordenador de Contabilidade",
+      "sentido": "menor_melhor",
+      "situacao": "ativo",
+      "tipo": "resultado",
+      "unidade": "dias úteis"
+    },
+    {
+      "fonte": "Registro do sistema de conciliação",
+      "formula": "Conciliações automáticas dividido pelo total de conciliações do mês",
+      "id": "IND-2",
+      "linha_de_base": {
+        "data": "2026-01-31",
+        "fonte": "Processo manual",
+        "informado_por": "Coordenador de Contabilidade",
+        "origem": "pessoa",
+        "valor": "0"
+      },
+      "meta": {
+        "informado_por": "Gerente de Controladoria",
+        "origem": "pessoa",
+        "prazo": "2026-08-31",
+        "valor": "80"
+      },
+      "nome": "Conciliações feitas pela automação",
+      "periodicidade": "mensal",
+      "responsavel": "Coordenador de Contabilidade",
+      "sentido": "maior_melhor",
+      "situacao": "ativo",
+      "tipo": "antecedente",
+      "unidade": "percentual"
+    }
+  ],
+  "licoes": [
+    {
+      "acao": "Nos próximos projetos, marcar a primeira medição fora de meses atípicos.",
+      "etapa": "mensuracao",
+      "id": "LIC-1",
+      "licao": "A primeira medição caiu em mês de fechamento de trimestre, o que dificultou a atribuição.",
+      "prazo": "2026-12-15",
+      "redacao": "pessoa",
+      "responsavel": "Escritório de Projetos"
+    }
+  ],
+  "medicoes": [
+    {
+      "data": "2026-07-31",
+      "fonte": "Calendário de fechamento",
+      "id": "MED-1",
+      "indicador": "IND-1",
+      "informado_por": "Coordenador de Contabilidade",
+      "origem": "pessoa",
+      "valor": "8"
+    },
+    {
+      "data": "2026-08-31",
+      "fonte": "Calendário de fechamento",
+      "id": "MED-2",
+      "indicador": "IND-1",
+      "informado_por": "Coordenador de Contabilidade",
+      "origem": "pessoa",
+      "valor": "8"
+    },
+    {
+      "data": "2026-09-30",
+      "fonte": "Calendário de fechamento",
+      "id": "MED-3",
+      "indicador": "IND-1",
+      "informado_por": "Coordenador de Contabilidade",
+      "origem": "pessoa",
+      "valor": "7"
+    }
+  ],
+  "monitoramento": {
+    "cadencia": {
+      "executiva": "trimestral",
+      "operacional": "semanal",
+      "revisao_valor": "mensal"
+    },
+    "leituras": [
+      {
+        "data": "2026-06-30",
+        "id": "LEI-1",
+        "indicador": "IND-2",
+        "informado_por": "Coordenador de Contabilidade",
+        "origem": "pessoa",
+        "valor": "55"
+      }
+    ]
+  },
+  "objetivos": [
+    {
+      "descricao": "Dar à gestão informação financeira mais cedo para decidir.",
+      "id": "OBJ-1"
+    }
+  ],
+  "papeis": {
+    "beneficio": "Gerente de Controladoria",
+    "governanca": "Escritório de Projetos",
+    "indicador": "Coordenador de Contabilidade",
+    "projeto": "Gerente do Projeto"
+  },
+  "premissas": [
+    {
+      "bloqueante": false,
+      "criada_por": "agente",
+      "id": "PRE-1",
+      "situacao": "aberta",
+      "texto": "O volume de lançamentos se mantém estável no período."
+    }
+  ],
+  "projeto": {
+    "descricao": "Automatizar conciliações e lançamentos recorrentes do fechamento mensal.",
+    "etapa_atual": "encerrado",
+    "ficticio": true,
+    "id": "exemplo-ficticio",
+    "nome": "Automação do fechamento financeiro",
+    "problema": "O fechamento mensal leva 10 dias úteis e atrasa os relatórios gerenciais.",
+    "versao_esquema": "0.1"
+  },
+  "raci": [
+    {
+      "atividade": "Medir o tempo de fechamento",
+      "beneficio": "A",
+      "governanca": "I",
+      "indicador": "R",
+      "projeto": "I"
+    },
+    {
+      "atividade": "Aprovar mudança de meta",
+      "beneficio": "R",
+      "governanca": "A",
+      "indicador": "C",
+      "projeto": "C"
+    }
+  ],
+  "resultados": [
+    {
+      "classificacao": "parcial",
+      "ferramenta": "calculadora@0.1.0",
+      "indicador": "IND-1",
+      "medicao": "MED-1",
+      "realizacao": "2/3"
+    },
+    {
+      "classificacao": "parcial",
+      "ferramenta": "calculadora@0.1.0",
+      "indicador": "IND-1",
+      "medicao": "MED-2",
+      "realizacao": "2/3"
+    },
+    {
+      "classificacao": "realizado",
+      "ferramenta": "calculadora@0.1.0",
+      "indicador": "IND-1",
+      "medicao": "MED-3",
+      "realizacao": "1"
+    }
+  ],
+  "riscos": [
+    {
+      "acao": "Acompanhar o envio por área na revisão de valor mensal.",
+      "descricao": "Áreas continuam enviando dados depois do segundo dia útil.",
+      "id": "RIS-1",
+      "impacto_no_valor": "Sem os dados no prazo, o tempo de fechamento não cai.",
+      "prazo": "2026-07-31",
+      "redacao": "pessoa",
+      "responsavel": "Gerente de Controladoria",
+      "tipo": "risco"
+    }
+  ],
+  "transicao": {
+    "acessos": "Acesso ao calendário de fechamento e ao sistema de conciliação mantido para a Controladoria",
+    "apoio_ate_primeira_medicao": "Gerente do Projeto",
+    "data": "2026-06-30",
+    "itens": [
+      "Fichas dos indicadores na versão vigente",
+      "Proposta de Valor aprovada",
+      "Calendário de medição pós-implementação"
+    ],
+    "pendencias": [
+      "Acompanhar o envio de dados por área (RIS-1), com o Gerente de Controladoria"
+    ],
+    "recebido_por": "Gerente de Controladoria",
+    "redacao": "pessoa"
+  }
+}

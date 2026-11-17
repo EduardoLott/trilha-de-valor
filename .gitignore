@@ -1,0 +1,9 @@
+__pycache__/
+*.pyc
+.DS_Store
+
+# Nunca versionar dados de pesquisa ou de projetos reais
+*.csv
+*.xlsx
+projetos/*
+!projetos/exemplo-ficticio/
