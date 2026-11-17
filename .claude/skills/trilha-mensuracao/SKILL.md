@@ -73,7 +73,7 @@ Este passo pode ser feito antes ou depois do cálculo.
 
 Pergunta orientadora: quanto do que foi planejado foi alcançado?
 
-Rode `python3 -m tools.trilha calcular PASTA`. Apresente à pessoa exatamente o que o comando devolveu: linha de base, meta, resultado, realização (fração e percentual), classificação e as faixas usadas. Não refaça nem arredonde a conta por conta própria.
+Rode `python3 -m tools.trilha calcular PASTA`. Apresente à pessoa exatamente o que o comando devolveu: linha de base, meta, resultado, realização (fração e percentual), classificação e as faixas usadas. Não refaça nem arredonde a conta por conta própria. Depois, ofereça o painel de acompanhamento (`python3 -m tools.painel PASTA`), que mostra a mesma realização em gráfico.
 
 Se a pessoa pedir outra classificação ("ficou perto, coloca como realizado"), explique que a classificação segue as faixas combinadas na Definição e não mude nada. Mudar as faixas ou a meta é uma decisão registrada, que fica visível no relatório. Registre o pedido recusado com `ocorrencia`. A fórmula é realização = (resultado − linha de base) ÷ (meta − linha de base), e vale também quando menor é melhor.
 

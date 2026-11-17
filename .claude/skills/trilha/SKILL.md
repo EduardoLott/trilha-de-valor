@@ -42,6 +42,7 @@ Se o pedido da pessoa não combinar com a etapa (por exemplo, medir resultados d
 
 - Informe o documento gerado e o hash.
 - Diga qual é a próxima etapa e o que a pessoa precisa trazer para ela.
+- Ofereça o painel de acompanhamento (`python3 -m tools.painel PASTA`), que reúne indicadores, documentos e pendências numa página.
 - Ofereça `python3 -m tools.auditar PASTA`, e explique que o aviso de "âncora externa" é esperado enquanto o último hash não for guardado fora do projeto.
 
 ## O que não fazer

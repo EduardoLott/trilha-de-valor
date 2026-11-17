@@ -1,0 +1,97 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Painel de Valor</title>
+<style>
+:root{--bg:#f6f5f2;--card:#fff;--ink:#1c1f24;--muted:#5c6470;--line:#dedbd4;--accent:#1f5f8b;
+--ok:#2f7d4f;--mid:#b07a12;--bad:#b23b3b;--soft:#eef2f5}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#15171a;--card:#1e2126;--ink:#e8e6e1;
+--muted:#9aa2ad;--line:#33373e;--accent:#6fb0dc;--ok:#5fbf86;--mid:#e0ac45;--bad:#e27474;--soft:#252a31}}
+:root[data-theme="dark"]{--bg:#15171a;--card:#1e2126;--ink:#e8e6e1;--muted:#9aa2ad;--line:#33373e;--accent:#6fb0dc;
+--ok:#5fbf86;--mid:#e0ac45;--bad:#e27474;--soft:#252a31}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--ink);
+font:15px/1.5 -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Arial,sans-serif}
+main{max-width:980px;margin:0 auto;padding:24px 16px 48px}
+h1{font-size:26px;margin:4px 0}h2{font-size:17px;margin:32px 0 10px;color:var(--muted);font-weight:600;
+text-transform:uppercase;letter-spacing:.04em}h3{font-size:18px;margin:6px 0 2px}
+.selo{display:inline-block;font-size:12px;padding:2px 8px;border:1px solid var(--line);border-radius:99px;color:var(--muted)}
+.etapa{color:var(--accent);font-weight:600}.meta-info{color:var(--muted);font-size:13px;margin:2px 0}
+.aviso{background:var(--soft);border-left:4px solid var(--mid);padding:10px 14px;border-radius:6px;margin:12px 0}
+.aviso.forte{border-color:var(--bad)}.aviso ul{margin:4px 0;padding-left:18px}
+.cartao{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
+.cartao.descontinuado{opacity:.6}
+.tag{display:inline-block;font-size:12px;background:var(--soft);color:var(--muted);padding:1px 8px;border-radius:99px;margin-right:6px}
+.tag.alerta{color:var(--bad)}
+.refs{display:grid;grid-template-columns:repeat(3,1fr);gap:10px;margin:14px 0}
+.refs div{background:var(--soft);border-radius:8px;padding:8px 10px;display:flex;flex-direction:column;min-width:0}
+.k{font-size:12px;color:var(--muted)}.v{font-size:20px;font-weight:600}.v.pequeno{font-size:15px}.d{font-size:12px;color:var(--muted)}
+.destaque{display:flex;align-items:baseline;gap:10px;padding:8px 0;border-top:1px solid var(--line)}
+.pct{font-size:30px;font-weight:700}.destaque.realizado .pct{color:var(--ok)}.destaque.parcial .pct{color:var(--mid)}
+.destaque.nao_realizado .pct{color:var(--bad)}.destaque.neutro .pct{color:var(--accent)}
+figure{margin:8px 0}svg{width:100%;height:auto;display:block}
+svg .eixo{stroke:var(--line)}svg .ref{stroke-width:1.5;stroke-dasharray:6 5}svg .ref.base{stroke:var(--muted)}
+svg .ref.meta{stroke:var(--ok)}svg text{font-size:12px;fill:var(--muted)}svg .rotulo.meta,svg .legenda-ref.meta{fill:var(--ok)}
+svg .serie{fill:none;stroke:var(--accent);stroke-width:2}svg .medicao{fill:var(--accent)}
+svg .leitura{fill:var(--card);stroke:var(--accent);stroke-width:2}svg .valor{fill:var(--ink);font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:13px;margin-top:8px}th,td{text-align:left;padding:6px 8px;
+border-bottom:1px solid var(--line);vertical-align:top}th{color:var(--muted);font-weight:600}tr.nm td{color:var(--bad)}
+.tabela{overflow-x:auto}
+.documentos{list-style:none;padding:0;display:grid;grid-template-columns:repeat(5,1fr);gap:8px;counter-reset:d}
+.documentos li{background:var(--card);border:1px solid var(--line);border-radius:10px;padding:10px;font-size:13px;
+display:flex;flex-direction:column;gap:2px}.documentos li span{color:var(--muted)}
+.documentos li.feito{border-color:var(--ok)}.documentos li.feito strong{color:var(--ok)}
+.vazio{color:var(--muted);font-style:italic}
+footer{margin-top:36px;font-size:12px;color:var(--muted);border-top:1px solid var(--line);padding-top:12px;word-break:break-all}
+@media (max-width:720px){.refs{grid-template-columns:1fr}.documentos{grid-template-columns:1fr 1fr}}
+</style>
+</head>
+<body><main>
+<span class="selo">Painel de acompanhamento · dados fictícios</span>
+<h1>Automação do fechamento financeiro</h1>
+<p class="etapa">Ciclo encerrado</p>
+<p class="meta-info">O fechamento mensal leva 10 dias úteis e atrasa os relatórios gerenciais.</p>
+
+<h2>Documentos do ciclo</h2>
+<ol class="documentos"><li class="feito"><strong>Proposta de Valor</strong><span>aprovado em 10/02/2026 por Gerente de Controladoria</span></li><li class="feito"><strong>Relatório de Monitoramento</strong><span>aprovado em 30/06/2026 por Gerente de Controladoria</span></li><li class="feito"><strong>Termo de Transição</strong><span>aprovado em 30/06/2026 por Gerente de Controladoria</span></li><li class="feito"><strong>Relatório de Benefícios</strong><span>aprovado em 05/10/2026 por Gerente de Controladoria</span></li><li class="feito"><strong>Registro de Lições Aprendidas</strong><span>aprovado em 15/10/2026 por Gerente de Controladoria</span></li></ol>
+<h2>Benefícios</h2>
+<ul><li><strong>BEN-1</strong> Fechamento mensal mais rápido. <span class="meta-info">responsável: Gerente de Controladoria · prazo: 30/09/2026</span></li></ul>
+<h2>Indicadores</h2>
+
+<section class="cartao">
+  <header>
+    <div><span class="tag">resultado</span><span class="tag">menor é melhor</span></div>
+    <h3>IND-1 · Tempo de fechamento mensal</h3>
+    <p class="meta-info">Dias úteis entre o fim do mês e a publicação do fechamento · fonte: Calendário de fechamento da Controladoria · mensal · responsável: Coordenador de Contabilidade</p>
+  </header>
+  <div class="refs">
+    <div><span class="k">Linha de base</span><span class="v">10 dias úteis</span><span class="d">31/01/2026</span></div>
+    <div><span class="k">Meta</span><span class="v">7 dias úteis</span><span class="d">30/09/2026</span></div>
+    <div><span class="k">Método de comprovação</span><span class="v pequeno">antes e depois</span><span class="d">Meta atingida e mantida por três fechamentos seguidos.</span></div>
+  </div>
+  <div class="destaque realizado"><span class="pct">100%</span><span>da meta em 30/09/2026 · realizado</span></div>
+  <figure><svg viewBox="0 0 640 220" role="img" aria-label="Evolução de Tempo de fechamento mensal"><line class="eixo" x1="56" y1="186" x2="624" y2="186"/><line class="ref base" x1="56" y1="33.8" x2="624" y2="33.8"/><text class="rotulo base" x="50" y="37.8" text-anchor="end">10</text><text class="legenda-ref base" x="60" y="28.8" text-anchor="start">linha de base</text><line class="ref meta" x1="56" y1="166.2" x2="624" y2="166.2"/><text class="rotulo meta" x="50" y="170.2" text-anchor="end">7</text><text class="legenda-ref meta" x="60" y="161.2" text-anchor="start">meta</text><path class="serie" d="M80.0,122.1 L340.0,122.1 L600.0,166.2"/><circle class="medicao" cx="80.0" cy="122.1" r="5"><title>31/07/2026: 8 (medição)</title></circle><text class="valor" x="80.0" y="112.1" text-anchor="middle">8</text><text class="data" x="80.0" y="208" text-anchor="middle">31/07/2026</text><circle class="medicao" cx="340.0" cy="122.1" r="5"><title>31/08/2026: 8 (medição)</title></circle><text class="valor" x="340.0" y="112.1" text-anchor="middle">8</text><text class="data" x="340.0" y="208" text-anchor="middle">31/08/2026</text><circle class="medicao" cx="600.0" cy="166.2" r="5"><title>30/09/2026: 7 (medição)</title></circle><text class="valor" x="600.0" y="156.2" text-anchor="middle">7</text><text class="data" x="600.0" y="208" text-anchor="middle">30/09/2026</text></svg></figure>
+  <table><thead><tr><th>Data</th><th>Tipo</th><th>Valor</th><th>Informado por</th><th>Realização</th></tr></thead><tbody><tr><td>31/07/2026</td><td>medição</td><td>8</td><td>Coordenador de Contabilidade</td><td>67% (parcial)</td></tr><tr><td>31/08/2026</td><td>medição</td><td>8</td><td>Coordenador de Contabilidade</td><td>67% (parcial)</td></tr><tr><td>30/09/2026</td><td>medição</td><td>7</td><td>Coordenador de Contabilidade</td><td>100% (realizado)</td></tr></tbody></table>
+</section>
+<section class="cartao">
+  <header>
+    <div><span class="tag">antecedente</span><span class="tag">maior é melhor</span></div>
+    <h3>IND-2 · Conciliações feitas pela automação</h3>
+    <p class="meta-info">Conciliações automáticas dividido pelo total de conciliações do mês · fonte: Registro do sistema de conciliação · mensal · responsável: Coordenador de Contabilidade</p>
+  </header>
+  <div class="refs">
+    <div><span class="k">Linha de base</span><span class="v">0 percentual</span><span class="d">31/01/2026</span></div>
+    <div><span class="k">Meta</span><span class="v">80 percentual</span><span class="d">31/08/2026</span></div>
+    <div><span class="k">Método de comprovação</span><span class="v pequeno">não se aplica</span><span class="d"></span></div>
+  </div>
+  <div class="destaque neutro"><span class="pct">55</span><span>última leitura, em 30/06/2026 (a realização é calculada na Mensuração)</span></div>
+  <figure><svg viewBox="0 0 640 220" role="img" aria-label="Evolução de Conciliações feitas pela automação"><line class="eixo" x1="56" y1="186" x2="624" y2="186"/><line class="ref base" x1="56" y1="166.2" x2="624" y2="166.2"/><text class="rotulo base" x="50" y="170.2" text-anchor="end">0</text><text class="legenda-ref base" x="60" y="161.2" text-anchor="start">linha de base</text><line class="ref meta" x1="56" y1="33.8" x2="624" y2="33.8"/><text class="rotulo meta" x="50" y="37.8" text-anchor="end">80</text><text class="legenda-ref meta" x="60" y="28.8" text-anchor="start">meta</text><circle class="leitura" cx="340.0" cy="75.2" r="5"><title>30/06/2026: 55 (leitura)</title></circle><text class="valor" x="340.0" y="65.2" text-anchor="middle">55</text><text class="data" x="340.0" y="208" text-anchor="middle">30/06/2026</text></svg></figure>
+  <table><thead><tr><th>Data</th><th>Tipo</th><th>Valor</th><th>Informado por</th><th>Realização</th></tr></thead><tbody><tr><td>30/06/2026</td><td>leitura</td><td>55</td><td>Coordenador de Contabilidade</td><td>—</td></tr></tbody></table>
+</section>
+<h2>Pendências em aberto</h2>
+<div class="tabela"><table><thead><tr><th>Tipo</th><th>Id</th><th>Descrição</th><th>Responsável</th><th>Prazo</th></tr></thead><tbody><tr><td>Risco</td><td>RIS-1</td><td>Áreas continuam enviando dados depois do segundo dia útil.</td><td>Gerente de Controladoria</td><td>31/07/2026</td></tr><tr><td>Encaminhamento</td><td>ENC-1</td><td>Continuar medindo a cada fechamento até completar três fechamentos seguidos na meta.</td><td>Gerente de Controladoria</td><td>31/12/2026</td></tr><tr><td>Ação de lição</td><td>LIC-1</td><td>Nos próximos projetos, marcar a primeira medição fora de meses atípicos.</td><td>Escritório de Projetos</td><td>15/12/2026</td></tr><tr><td>Premissa aberta</td><td>PRE-1</td><td>O volume de lançamentos se mantém estável no período.</td><td></td><td></td></tr></tbody></table></div>
+<footer>Painel gerado a partir do projeto.json pelo comando <code>python3 -m tools.painel</code>. Não substitui os documentos
+aprovados nem registra aprovação. Os valores são os informados pela pessoa; a realização e a classificação vêm da calculadora.
+Estado de origem (sha256): 24aa67e3a5830f0c270f41af2ad7695598aa90232835d6d3ba55cedda85b8f55</footer>
+</main></body></html>

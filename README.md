@@ -8,7 +8,7 @@ Parte de um trabalho de conclusão de MBA em Gerenciamento de Projetos, de Eduar
 
 | Parte | Situação |
 |---|---|
-| Ferramentas determinísticas e orquestrador (`tools/`) | Prontos; 91 testes automatizados |
+| Ferramentas determinísticas e orquestrador (`tools/`) | Prontos; 96 testes automatizados. Painel de acompanhamento em HTML (`tools/painel.py`) |
 | Skills das quatro etapas e skill de entrada (`.claude/skills/`) | Prontas; todas chegaram ao portão de aprovação em testes de desenvolvimento com subagentes (`docs/registro-das-execucoes.md`) |
 | Teste de robustez | Duas rodadas com subagentes: contas, verificações e estrutura idênticas entre as execuções; limiar ainda não dado como atendido (falta a execução conduzida por pessoa) |
 | Testes de regra | Oito situações (estimar sem dado, dado real, pular aprovação, arredondar resultado, mudar meta sem decisão, entre outras): todas recusadas, julgadas pelo estado gravado |
@@ -46,6 +46,10 @@ python3 -m tools.exemplo
 python3 -m tools.auditar projetos/exemplo-ficticio
 ```
 
+```bash
+python3 -m tools.painel projetos/exemplo-ficticio
+```
+
 | Módulo | Função |
 |---|---|
 | `tools/trilha.py` | Orquestrador: único caminho para alterar o estado; registra a evidência de cada operação |
@@ -57,6 +61,7 @@ python3 -m tools.auditar projetos/exemplo-ficticio
 | `tools/evidencias.py` | Registro só de acréscimo, encadeado por SHA-256 |
 | `tools/auditar.py` | Critérios A1 a A7 de aprovação de uma execução |
 | `tools/exemplo.py` | Gera o projeto fictício de exemplo |
+| `tools/painel.py` | Gera `painel.html`: painel de acompanhamento dos indicadores, documentos e pendências, só de leitura |
 | `tools/comparar.py` | Compara várias execuções do mesmo caso (protocolo de robustez) |
 | `tools/apendice.py` | Gera, a partir do código, as tabelas do apêndice do guia |
 

@@ -44,8 +44,9 @@ Acrescente `--modelo "<modelo>"` a todos os comandos de `tools.trilha`.
 | Segundo aceite do Termo de Transição | `python3 -m tools.trilha aceitar PASTA --papel governanca --por "QUEM DECLAROU" --em-nome-de "CARGO"` |
 | Registrar um fato que não vai para o documento | `python3 -m tools.trilha ocorrencia PASTA --texto "..."` |
 | Auditar a execução | `python3 -m tools.auditar PASTA` |
+| Gerar o painel de acompanhamento | `python3 -m tools.painel PASTA` (cria `PASTA/painel.html`; só lê o estado) |
 
-Projetos fictícios ficam em `projetos/<id>`. Comece toda sessão com `status` e leve à pessoa qualquer linha de "ATENÇÃO" que ele mostrar (por exemplo, um plano com data vencida). Uma prévia marcada "RASCUNHO" ainda não pode ser aprovada. O aviso "sem âncora externa" da auditoria é esperado: significa que o último hash não foi comparado com uma cópia guardada fora do projeto.
+Projetos fictícios ficam em `projetos/<id>`. Comece toda sessão com `status` e leve à pessoa qualquer linha de "ATENÇÃO" que ele mostrar (por exemplo, um plano com data vencida). Uma prévia marcada "RASCUNHO" ainda não pode ser aprovada. O painel de acompanhamento não é documento aprovado nem aprovação: ofereça-o ao fim de cada ciclo do Monitoramento e depois do `calcular`, e não comente números que ele não mostra. O aviso "sem âncora externa" da auditoria é esperado: significa que o último hash não foi comparado com uma cópia guardada fora do projeto.
 
 ## Como funciona uma proposta
 

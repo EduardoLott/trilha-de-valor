@@ -83,6 +83,8 @@ Tipos de decisão: `mudanca_escopo`, `revisao_indicador`, `revisao_meta`, `revis
 
 Se a pessoa pedir uma alteração sem registrar decisão e depois desistir, nada muda no estado; registre o fato com `ocorrencia`.
 
+**Painel.** Ao fim de cada ciclo registrado, ofereça `python3 -m tools.painel PASTA` e diga onde o arquivo ficou (`PASTA/painel.html`). O painel mostra linha de base, meta e leituras; não calcula percentual no Monitoramento.
+
 ### M5. Consolidar e preparar a transição (perto do fim do projeto)
 
 Pergunta orientadora: temos informações e condições para medir os benefícios depois da implementação?
