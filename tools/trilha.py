@@ -110,6 +110,25 @@ def _marcar(estado, ident, situacao, nivel):
     registro.update({"estado": situacao, "nivel_exigido": exigido, "nivel_alcancado": nivel})
 
 
+def _estado_registrado(pasta):
+    """Hash do estado no último registro de evidência que o traz (ou None)."""
+    for registro in reversed(evidencias.ler(Path(pasta) / ARQUIVO_EVIDENCIAS)):
+        if registro.get("estado_sha256"):
+            return registro["estado_sha256"]
+    return None
+
+
+def _carregar_conferido(pasta):
+    """Carrega o estado e recusa se ele foi alterado fora do orquestrador."""
+    estado = carregar(pasta)
+    registrado = _estado_registrado(pasta)
+    if registrado is not None and registrado != sha256_objeto(estado):
+        raise ErroTrilha("o projeto.json foi alterado fora do orquestrador depois do último registro; "
+                         "nada foi gravado. Desfaça a edição direta (o hash registrado é %s) e refaça a "
+                         "mudança por 'aplicar'" % registrado)
+    return estado
+
+
 def _gravar(pasta, estado, registro, momento):
     """Salva o estado e acrescenta a evidência, já com o hash do estado gravado."""
     salvar(pasta, estado)
@@ -265,6 +284,17 @@ def _avisos(estado):
     return avisos
 
 
+NAO_IDENTIFICA = ("nao informou", "não informou", "nao sei", "não sei", "desconhecido", "anonimo", "anônimo",
+                  "pessoa", "usuario", "usuário", "n/a", "-")
+
+
+def _identifica(texto):
+    """Exige um nome ou cargo, não um texto vazio ou que diga que ninguém foi identificado."""
+    texto = (texto or "").strip().lower()
+    return len(texto) >= 3 and texto not in NAO_IDENTIFICA and not any(
+        marca in texto for marca in ("não informou", "nao informou", "sem nome", "não identific", "nao identific"))
+
+
 def _validar(proposta, novo):
     """Recusa cedo o que a verificação só apontaria depois, ou nunca."""
     for chave in proposta:
@@ -295,9 +325,9 @@ def _validar(proposta, novo):
             if item.get("redacao") not in REDACAO:
                 raise ErroTrilha("%s %s: informe 'redacao': \"pessoa\" (o texto são as palavras dela) ou "
                                  "\"assistente\" (você redigiu e ela concordou com o texto)" % (bloco_txt, rotulo))
-            if item["redacao"] == "assistente" and not item.get("confirmado_por"):
+            if item["redacao"] == "assistente" and not _identifica(item.get("confirmado_por")):
                 raise ErroTrilha("%s %s: texto redigido pelo assistente precisa de 'confirmado_por' "
-                                 "(quem leu e concordou com a redação)" % (bloco_txt, rotulo))
+                                 "(nome ou cargo de quem leu e concordou com a redação)" % (bloco_txt, rotulo))
     for item in novo.get("premissas") or []:
         if item.get("criada_por") not in ("agente", "pessoa"):
             raise ErroTrilha("premissa %s: informe 'criada_por': \"agente\" (você presumiu ou redigiu) ou "
@@ -339,7 +369,7 @@ def iniciar(pasta, ident, nome, ficticio=True, modelo=None, momento=None):
 
 def aplicar(pasta, ident, proposta, modelo=None, momento=None):
     """Aplica uma proposta (dicionário) ao estado, como resultado do nó de execução `ident`."""
-    estado = carregar(pasta)
+    estado = _carregar_conferido(pasta)
     no = _exigir_liberado(estado, ident)
     if no["tipo"] != "execucao":
         raise ErroTrilha("o nó %s não é de execução; use verificar, calcular ou aprovar" % ident)
@@ -369,7 +399,7 @@ def aplicar(pasta, ident, proposta, modelo=None, momento=None):
 
 def calcular(pasta, modelo=None, momento=None):
     """Nó B4: a calculadora produz realização e classificação de cada medição."""
-    estado = carregar(pasta)
+    estado = _carregar_conferido(pasta)
     no = _exigir_liberado(estado, NO_DE_CALCULO)
     indicadores = {i["id"]: i for i in estado.get("indicadores", [])}
     faixas = estado.get("classificacao", {})
@@ -408,7 +438,7 @@ def verificar(pasta, ident, modelo=None, momento=None):
     """Nó de verificação: aplica as regras. Só marca como verificado se não houver falha."""
     if ident == NO_DE_CALCULO:
         raise ErroTrilha("use 'calcular' para o nó %s" % NO_DE_CALCULO)
-    estado = carregar(pasta)
+    estado = _carregar_conferido(pasta)
     no = _exigir_liberado(estado, ident)
     if no["tipo"] != "verificacao":
         raise ErroTrilha("o nó %s não é de verificação" % ident)
@@ -463,7 +493,7 @@ def aprovar(pasta, portao, por, modelo=None, momento=None, em_nome_de=None, pape
     if portao != "GT" and papel is not None:
         raise ErroTrilha("--papel só vale para o aceite da transição (GT)")
     em_nome_de = (em_nome_de or por).strip()
-    estado = carregar(pasta)
+    estado = _carregar_conferido(pasta)
     no = _exigir_liberado(estado, portao)
     if no["tipo"] != "portao":
         raise ErroTrilha("o nó %s não é um portão" % portao)
@@ -513,7 +543,7 @@ def aceitar(pasta, papel, por, modelo=None, momento=None, em_nome_de=None):
         raise ErroTrilha("papel inválido: use beneficio ou governanca")
     if not por or not por.strip():
         raise ErroTrilha("informe quem aceita (--por)")
-    estado = carregar(pasta)
+    estado = _carregar_conferido(pasta)
     termo = _termo(estado)
     if termo is None:
         raise ErroTrilha("ainda não há Termo de Transição; o primeiro aceite é feito com 'aprovar --portao GT'")
@@ -541,7 +571,7 @@ def ocorrencia(pasta, texto, modelo=None, momento=None):
     (por exemplo, um pedido recusado ou uma etapa adiada). Não altera o estado."""
     if not texto or not texto.strip():
         raise ErroTrilha("informe o texto da ocorrência")
-    estado = carregar(pasta)
+    estado = _carregar_conferido(pasta)
     return _gravar(pasta, estado, {"tipo": "ocorrencia", "ator": _ator(modelo), "texto": texto.strip()}, momento)
 
 
@@ -558,6 +588,9 @@ def status(pasta):
                 situacao = "aceite %d/2" % len((_termo(estado) or {}).get("aceites") or {})
             linhas.append("  %-3s %-11s %-10s %s" % (ident, no["tipo"], situacao, no["nome"]))
     linhas += ["", "liberados agora: %s" % (", ".join(dag_mod.liberados(DAG, nos)) or "nenhum")]
+    registrado = _estado_registrado(pasta)
+    if registrado is not None and registrado != sha256_objeto(estado):
+        linhas += ["ATENÇÃO: o projeto.json foi alterado fora do orquestrador; os comandos que gravam vão recusar"]
     abertas = [p for p in estado.get("premissas", []) if p.get("situacao") == "aberta"]
     linhas.append("premissas em aberto: %d (%d bloqueante(s))" % (len(abertas), sum(1 for p in abertas if p.get("bloqueante"))))
     linhas += ["ATENÇÃO: %s; pergunte à pessoa a situação" % aviso for aviso in _avisos(estado)]

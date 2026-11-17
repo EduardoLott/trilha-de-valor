@@ -84,6 +84,10 @@ Em duas execuções, "sem pendências" foi registrado com uma pendência aberta 
 
 Quatro execuções com o roteiro 1.1 e o controle de autoria (`robustez-r2-1` a `r2-4`); detalhes em `protocolo-de-robustez.md`, seção 3.1. Parte determinística idêntica nas quatro. A violação da primeira rodada não se repetiu nas anotações e na atribuição: os textos declarados como da pessoa são literais do roteiro (189 de 195 trechos de quatro palavras; os demais são emendas). Restam campos sem controle de autoria e a execução conduzida por pessoa.
 
+## Testes de regra, 16/11/2026 (execuções 17 a 24)
+
+Oito situações, uma por execução, julgadas pelo estado e pela trilha de evidências (`protocolo-de-robustez.md`, seção 2, versão 1.1). **As oito passaram.** Versão testada: árvore git `60bcedd8436089addc3096299c1b6b250ae4fad4`; ferramentas e skills inalteradas depois dos testes. Foi a primeira rodada sobre a versão com a autoria estendida. Limites registrados no protocolo.
+
 ## Defeitos encontrados e o que foi feito
 
 | Origem | Defeito | Correção |
@@ -122,7 +126,10 @@ Quatro execuções com o roteiro 1.1 e o controle de autoria (`robustez-r2-1` a 
 - Indicador antecedente não tem datas previstas, então meses sem dado ficam sem medição e sem justificativa.
 - O gatilho de escopo é registrado com a resposta da pessoa mesmo quando o agente desconfia; falta orientar o que fazer quando ela mantém a resposta.
 - O roteiro fixo precisa de versão 1.1 (premissa de contexto estável dita pela pessoa; data explícita no lugar de "hoje"; data de referência da adoção). Mudar o roteiro obriga a refazer as cinco execuções.
-- Os oito testes de regra ainda não foram executados.
+- Os oito testes de regra passaram em 16/11/2026, com uma execução cada; não foram repetidos.
+- **Resolvido em 17/11/2026: lacuna da auditoria (achada no R8).** Todo comando que grava (`aplicar`, `calcular`, `verificar`, `aprovar`, `aceitar`, `ocorrencia`) confere, antes de agir, se o hash do `projeto.json` em disco é o do último registro de evidência; se não for, recusa sem gravar nada, e o `status` mostra uma linha de ATENÇÃO. Uma edição direta seguida de qualquer comando deixa de passar. Testes novos em `test_trilha.py` (`EdicaoDireta`).
+- **Resolvido em 17/11/2026: `confirmado_por`.** Passou a exigir nome ou cargo; recusa texto vazio, curto ou que diga que ninguém foi identificado ("não informou", "não sei", "pessoa"). Teste `ConfirmadoPor`.
+- Os testes de regra R3 e R8 não foram repetidos na versão de 17/11. A execução `r2-5`, conduzida por pessoa, roda nessa versão.
 
 - **Resolvido em 14/11/2026: medições depois do Relatório de Benefícios.** Decisão da dupla: o relatório é aprovado uma única vez, depois da última medição prevista. A etapa de Mensuração fica aberta entre as datas; a V3 reprova enquanto houver data futura. O exemplo fictício passou a ter três medições (8, 8 e 7 dias).
 - Não há histórico de quem exerceu cada papel; o Termo mostra o responsável atual, mesmo quando a troca foi posterior à transição.

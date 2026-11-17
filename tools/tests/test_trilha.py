@@ -433,3 +433,48 @@ class PontaAPonta(Base):
 
 if __name__ == "__main__":
     unittest.main()
+
+
+class EdicaoDireta(Base):
+    def editar_por_fora(self):
+        estado = self.estado()
+        estado["projeto"]["nome"] = "Editado à mão"
+        est.salvar(self.pasta, estado)
+
+    def test_comando_recusa_estado_editado_por_fora(self):
+        self.iniciar()
+        trilha.aplicar(self.pasta, "D1", P["D1"])
+        self.editar_por_fora()
+        antes = len(evidencias.ler(self.pasta / est.ARQUIVO_EVIDENCIAS))
+        for acao in (lambda: trilha.aplicar(self.pasta, "D2", P["D2"]),
+                     lambda: trilha.ocorrencia(self.pasta, "nota"),
+                     lambda: trilha.verificar(self.pasta, "V1")):
+            with self.assertRaises(trilha.ErroTrilha):
+                acao()
+        self.assertEqual(len(evidencias.ler(self.pasta / est.ARQUIVO_EVIDENCIAS)), antes)
+        self.assertFalse(auditar.auditar(self.pasta)["aprovado"])
+        self.assertIn("ATENÇÃO", trilha.status(self.pasta))
+
+    def test_desfazer_a_edicao_libera_os_comandos(self):
+        self.iniciar()
+        trilha.aplicar(self.pasta, "D1", P["D1"])
+        original = self.estado()
+        self.editar_por_fora()
+        est.salvar(self.pasta, original)
+        trilha.aplicar(self.pasta, "D2", P["D2"])
+        self.assertIn("D2", [r.get("no") for r in evidencias.ler(self.pasta / est.ARQUIVO_EVIDENCIAS)])
+        self.assertNotIn("ATENÇÃO: o projeto.json", trilha.status(self.pasta))
+
+
+class ConfirmadoPor(Base):
+    def test_confirmado_por_exige_identificacao(self):
+        self.iniciar()
+        trilha.aplicar(self.pasta, "D1", P["D1"])
+        for texto in ("", "  ", "-", "não informou nome nem papel", "Pessoa"):
+            nota = {"anotacoes": [{"id": "NOTA-90", "no": "D1", "texto": "x", "redacao": "assistente",
+                                   "confirmado_por": texto}]}
+            with self.assertRaises(trilha.ErroTrilha):
+                trilha.aplicar(self.pasta, "D2", dict(P["D2"], **nota))
+        nota = {"anotacoes": [{"id": "NOTA-90", "no": "D1", "texto": "x", "redacao": "assistente",
+                               "confirmado_por": "Ana, Escritório de Projetos"}]}
+        trilha.aplicar(self.pasta, "D2", dict(P["D2"], **nota))
