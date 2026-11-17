@@ -2,18 +2,20 @@
 
 Assistente de IA que conduz um projeto pelas quatro etapas da Trilha de Valor (Definição de Valor, Monitoramento de Valor, Mensuração dos Benefícios, Governança e Melhoria Contínua) e deixa uma trilha auditável do que foi feito.
 
-Parte de um trabalho de conclusão de MBA em Gerenciamento de Projetos. **Em construção.**
+Parte de um trabalho de conclusão de MBA em Gerenciamento de Projetos, desenvolvido em dupla (método Design Science Research).
 
-## Situação
+## Situação (17/11/2026)
 
 | Parte | Situação |
 |---|---|
-| Ferramentas determinísticas e orquestrador (`tools/`) | Prontos e testados |
-| Skills das quatro etapas e skill de entrada (`.claude/skills/`) | Escritas. Definição e Mensuração passaram por testes de desenvolvimento (ver `docs/registro-das-execucoes.md`); Monitoramento, Sustentação e a skill de entrada ainda não foram executadas com um modelo |
-| Teste de robustez | Protocolo, roteiro fixo e ferramenta de comparação prontos (`docs/protocolo-de-robustez.md`); execuções ainda não realizadas |
-| Avaliação com especialistas | Rubrica congelada (`docs/rubrica-de-avaliacao.md`); ainda não realizada |
+| Ferramentas determinísticas e orquestrador (`tools/`) | Prontos; 91 testes automatizados |
+| Skills das quatro etapas e skill de entrada (`.claude/skills/`) | Prontas; todas chegaram ao portão de aprovação em testes de desenvolvimento com subagentes (`docs/registro-das-execucoes.md`) |
+| Teste de robustez | Duas rodadas com subagentes: contas, verificações e estrutura idênticas entre as execuções; limiar ainda não dado como atendido (falta a execução conduzida por pessoa) |
+| Testes de regra | Oito situações (estimar sem dado, dado real, pular aprovação, arredondar resultado, mudar meta sem decisão, entre outras): todas recusadas, julgadas pelo estado gravado |
+| Avaliação com especialistas | Rubrica congelada (`docs/rubrica-de-avaliacao.md`); preparada e não realizada |
 | Projeto de exemplo fictício | Percorre as quatro etapas até o encerramento. Gerado por um roteiro que usa o orquestrador, não por uma execução do assistente |
-| Guia e kit de ferramentas | Ainda não incluídos |
+
+Os testes com subagentes usam o mesmo modelo que ajudou a construir o assistente e uma pessoa simulada: são testes de desenvolvimento, não a avaliação do artefato.
 
 ## Ideia central
 
@@ -56,6 +58,7 @@ python3 -m tools.auditar projetos/exemplo-ficticio
 | `tools/auditar.py` | Critérios A1 a A7 de aprovação de uma execução |
 | `tools/exemplo.py` | Gera o projeto fictício de exemplo |
 | `tools/comparar.py` | Compara várias execuções do mesmo caso (protocolo de robustez) |
+| `tools/apendice.py` | Gera, a partir do código, as tabelas do apêndice do guia |
 
 ## Como usar o assistente
 
@@ -74,3 +77,7 @@ Abra esta pasta no Claude Code e peça, por exemplo, "quero definir o valor de u
 ## Dados sigilosos
 
 Use apenas dados fictícios neste repositório. Não registre dados reais de empresas, projetos ou pessoas. O `.gitignore` exclui tudo em `projetos/`, exceto o exemplo fictício.
+
+## Licença
+
+Código (`tools/`) sob a licença MIT (`LICENSE`). Textos (`docs/`, skills, `CLAUDE.md` e o exemplo fictício) sob a Creative Commons Atribuição 4.0 Internacional (CC BY 4.0), conforme `LICENSE-docs.md`.
