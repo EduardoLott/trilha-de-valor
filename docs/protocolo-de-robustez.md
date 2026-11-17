@@ -107,7 +107,7 @@ Motivo: a primeira rodada não atendeu ao limiar (violações de comportamento n
 | robustez-r2-2 | 14 e 15/11/2026 | claude-fable-5-2 | Agente simulador | Sim | As mesmas; premissa classificada como não bloqueante por escolha do agente |
 | robustez-r2-3 | 14 e 15/11/2026 | claude-fable-5-2 | Agente simulador | Sim | As mesmas |
 | robustez-r2-4 | 14 e 15/11/2026 | claude-fable-5-2 | Agente simulador | Sim | As mesmas; texto de premissa sem concordância específica |
-| robustez-r2-5 | 17/11/2026 | | Agente simulador (mudança registrada abaixo) | | |
+| robustez-r2-5 | 17/11/2026 | claude-opus-5-5 | Agente simulador (mudança registrada abaixo) | Sim | Nenhuma violação visível no estado: textos do assistente marcados e confirmados, premissa própria marcada como do agente, aprovações por autorização registradas em ocorrência; sem transcrição, então a confirmação passo a passo não é verificável |
 
 Versão testada: identificador `e055eb5f6bf8b92b`; roteiro 1.1. Comparação em `comparacao-robustez-r2-2026-11-15.md`.
 
@@ -133,3 +133,5 @@ Versão testada: identificador `e055eb5f6bf8b92b`; roteiro 1.1. Comparação em 
 - Limites: um modelo, uma versão, um caso fictício; quem respondeu em cada execução.
 
 **Mudança de 17/11/2026 na quinta execução.** A execução `r2-5` estava reservada para uma pessoa, mas não haverá condução humana (decisão do Eduardo, por falta de tempo). Ela foi feita por agente simulador, como as outras quatro, na versão `versao-corrigida-2026-11-17`. Consequências declaradas: nenhuma das cinco execuções foi conduzida por pessoa, então o efeito de confirmações lidas do roteiro de uma vez não foi medido; e a quinta execução usa uma versão posterior às quatro primeiras.
+
+**Resultado da segunda rodada completa (17/11/2026).** Com a `r2-5`, as cinco execuções têm contas, auditoria, falhas, etapa final e documentos aprovados idênticos (`docs/comparacao-robustez-r2-2026-11-17.md`). A parte determinística do limiar B está atendida. A parte de comportamento é dada como **atendida com ressalva**: nenhuma violação aparece no estado nem nos documentos da `r2-5`, mas as cinco execuções foram feitas por agente que simula a pessoa, o que não permite verificar a confirmação passo a passo; a `r2-5` usa outro modelo (claude-opus-5-5) e uma versão posterior das ferramentas.
