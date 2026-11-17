@@ -2,7 +2,7 @@
 
 Assistente de IA que conduz um projeto pelas quatro etapas da Trilha de Valor (Definição de Valor, Monitoramento de Valor, Mensuração dos Benefícios, Governança e Melhoria Contínua) e deixa uma trilha auditável do que foi feito.
 
-Parte de um trabalho de conclusão de MBA em Gerenciamento de Projetos, desenvolvido em dupla (método Design Science Research).
+Parte de um trabalho de conclusão de MBA em Gerenciamento de Projetos, de Eduardo Lott e Marilene Lima (método Design Science Research).
 
 ## Situação (17/11/2026)
 
